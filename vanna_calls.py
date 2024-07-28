@@ -4,13 +4,13 @@ from vanna.remote import VannaDefault
 
 @st.cache_resource(ttl=3600)
 def setup_vanna():
-    vn = VannaDefault(api_key=st.secrets.get("VANNA_API_KEY"), model='chinook')
+    vn = VannaDefault(model='chinook', api_key='adcb996287bd4e6fa30d57dece9c18d2' )
     vn.connect_to_sqlite("https://vanna.ai/Chinook.sqlite")
     return vn
 
 @st.cache_data(show_spinner="Generating sample questions ...")
 def generate_questions_cached():
-    vn = setup_vanna()
+    vn = setup_vanna()  
     return vn.generate_questions()
 
 
